@@ -1,0 +1,119 @@
+{% block content %}
+{% load static %}
+
+{% include 'header1.html' %}
+
+  
+
+
+ <!-- contact section -->
+
+    <section class="contact_section layout_padding" id="contactLink">
+      <div class="container">
+         <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+                <h5 class="text-primary text-uppercase" style="letter-spacing: 5px;">Service Booking</h5>
+            </div>
+      </div>
+	    
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <form  action="addworker" method="post" enctype="multipart/form-data">
+			 {% csrf_token %}
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input type="text" class="form-control" id="inputName4" name="name" placeholder="Name ">
+                </div>
+                <div class="form-group col-md-6">
+                  <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email id">
+                </div>
+				 <div class="form-group col-md-6">
+                  <input type="file" class="form-control" id="inputEmail4" name="file" placeholder="">
+                </div>
+				<div class="form-group col-md-6">
+                  <input type="text" class="form-control" id="inputEmail4 "pattern="[0-9]{10}" title="Enter 10 Digits" placeholder="Phone Number" name="phone">
+                </div>
+				 <div class="col-6">
+                                    <label for="centre">Choose a Centre:</label>
+                                    <select name="centre" id="centre">
+                                        {% for i in res.Centre %}
+                                        <option value="{{i}}">{{i}}</option>
+                                        {% endfor %}   
+                                      </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="gender">Choose a gender:</label>
+                                    <select name="gender" id="gender">
+                                        {% for i in res.Gender %}
+                                        <option value="{{i}}">{{i}}</option>
+                                        {% endfor %}   
+                                      </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="labour_category">Choose a Labour Category:</label>
+                                    <select name="labour_category" id="labour_category">
+                                        {% for i in res.LabourCategory %}
+                                        <option value="{{i}}">{{i}}</option>
+                                        {% endfor %}   
+                                      </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="labour_type">Choose a Labour Type:</label>
+                                    <select name="labour_type" id="labour_type">
+                                        {% for i in res.LabourType %}
+                                        <option value="{{i}}">{{i}}</option>
+                                        {% endfor %}   
+                                      </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="state">Choose a state:</label>
+                                    <select name="state" id="state">
+                                        {% for i in res.State %}
+                                        <option value="{{i}}">{{i}}</option>
+                                        {% endfor %}   
+                                      </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="district">Choose a district:</label>
+                                    <select name="district" id="district">
+                                        {% for i in res.District %}
+                                        <option value="{{i}}">{{i}}</option>
+                                        {% endfor %}   
+                                      </select>
+                                </div>
+                                <div class="col-md-5 mb-3">
+                                    <select class="form-control border-0 px-4" id="country" required name="category">
+                                    <option  data-display="Select">Select Category</option>
+                                    {% for i in result %}
+                                    <option  >{{i.name}}</option>
+                                    {% endfor %}
+                                </select>
+                                </div>
+				<div class="form-group col-md-6">
+                  <input type="password" class="form-control"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="inputEmail4" title="Must Contain 8 characters with caps , small letters and number "  placeholder="Password" name="password">
+                </div>
+				<div class="form-group col-md-6">
+                  <input type="text" class="form-control" id="inputEmail4" name="status" value="pending" hidden>
+                </div>
+
+              </div>
+            
+             
+              <div class="d-flex justify-content-center">
+                <button type="submit" name="submit"class="">Register</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+
+    <!-- end contact section -->
+
+   
+
+{% include 'footer1.html' %}
+
+{% endblock %}

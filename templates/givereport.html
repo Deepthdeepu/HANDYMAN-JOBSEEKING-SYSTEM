@@ -1,0 +1,67 @@
+{% block content %}
+{% load static %}
+
+{% include 'header1.html' %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+
+ <section class="contact_section layout_padding" id="contactLink">
+      <div class="container">
+         <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+                <h5 class="text-primary text-uppercase" style="letter-spacing: 5px;">Work Report</h5>
+            </div>
+      </div>
+	    
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <form  action="addreports" method="post">
+                            {% csrf_token %}
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input type="text" class="form-control" id="inputName4"  hidden value="{{result.id}}" name="bid" >
+                </div>
+                <div class="form-group col-md-6">
+                  <input type="text" class="form-control" id="inputEmail4" hidden value="{{result.issue}}" name="issue">
+                </div>
+				<div class="form-group col-md-6">
+                  <input type="text" class="form-control" id="inputEmail4 " hidden value="{{result.uname}}" name="uname">
+                </div>
+				<div class="form-group col-md-6">
+                  <input type="text" class="form-control" id="inputEmail4 " hidden value="{{result.typee}}" name="typee">
+                </div>
+				<div class="form-group col-md-6">
+                  <input type="text" class="form-control"   id="inputEmail4" placeholder="Status" name="status" required data-error="Please enter type">
+                </div>
+				<div class="form-group col-md-6">
+                  <input type="date" class="form-control" id="inputEmail4"placeholder="Completed Date" name="date" required >
+                </div>
+				 <script language="javascript">
+                                    var today = new Date();
+                                    var dd = String(today.getDate()).padStart(2, '0');
+                                    var mm = String(today.getMonth() + 1).padStart(2, '0');
+                                    var yyyy = today.getFullYear();
+                            
+                                    today = yyyy + '-' + mm + '-' + dd;
+                                    $('#date_picker').attr('min',today);
+                                </script>
+
+              </div>
+            <div class="form-group col-md-6">
+                  <input type="text" class="form-control" id="inputEmail4" placeholder="amount" name="amount" required  >
+                </div>
+             
+              <div class="d-flex justify-content-center">
+                <button type="submit" name="submit" >submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+ 
+  
+
+{% include 'footer1.html' %}
+
+{% endblock %}
